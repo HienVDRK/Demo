@@ -4,9 +4,9 @@ function SanPham (props) {
   return (
     <div>
       <Link
-        as={`/detail?id=${props.value.id}`}
+        as={`/detail2/${props.value.id}`}
         href={{
-          pathname: '/detail',
+          pathname: '/detail2',
           query: {
             id: `${props.value.id}`
           }

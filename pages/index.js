@@ -46,7 +46,7 @@ class Home extends Component {
         {data.map((sanpham, index) => (
           <div key={index}>
             <Link
-              as={`/detail?id=${sanpham.id}`}
+              as={`/detail/${sanpham.id}`}
               href={{
                 pathname: '/detail',
                 query: {
