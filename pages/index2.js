@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Link from 'next/link'
 import { listSanpham } from '../listSanpham'
 import Layout from '../src/layouts/Layout'
+import SanPham from '../src/components/SanPham'
 
 class Home extends Component {
   constructor (props) {
@@ -44,23 +44,7 @@ class Home extends Component {
         </form>
 
         {data.map((sanpham, index) => (
-          <div key={index}>
-            <Link
-              as={`/detail?id=${sanpham.id}`}
-              href={{
-                pathname: '/detail',
-                query: {
-                  id: `${sanpham.id}`
-                }
-              }}
-            >
-              <h3>Sản phẩm: {sanpham.tensanpham}</h3>
-            </Link>
-            <h3>Giá: {sanpham.gia}</h3>
-            <h3>Trạng thái: {sanpham.status === true ? 'Còn hàng' : 'Hết hàng'}</h3>
-            <img src={sanpham.hinhanh} alt={sanpham.tensanpham} />
-            <hr />
-          </div>
+          <SanPham value={sanpham} key={index} />
         ))}
       </Layout>
     )
