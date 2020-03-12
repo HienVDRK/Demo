@@ -28,4 +28,94 @@ export const listSanpham = [{
   gia: 5000,
   hinhanh: '',
   status: false
+}, {
+  id: 6,
+  tensanpham: 'Samsung s7',
+  gia: 1000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 7,
+  tensanpham: 'Samsung s8',
+  gia: 2000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 8,
+  tensanpham: 'Samsung s7',
+  gia: 3000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 9,
+  tensanpham: 'Iphone s7',
+  gia: 4000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 10,
+  tensanpham: 'Iphone 10',
+  gia: 5000,
+  hinhanh: '',
+  status: false
+}, {
+  id: 11,
+  tensanpham: 'Iphone 11',
+  gia: 1000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 12,
+  tensanpham: 'Iphone 9',
+  gia: 2000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 13,
+  tensanpham: 'Iphone 8',
+  gia: 3000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 14,
+  tensanpham: 'Iphone 7',
+  gia: 4000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 15,
+  tensanpham: 'Iphone 6',
+  gia: 5000,
+  hinhanh: '',
+  status: false
+}, {
+  id: 16,
+  tensanpham: 'Iphone 7',
+  gia: 1000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 17,
+  tensanpham: 'Iphone 8',
+  gia: 2000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 18,
+  tensanpham: 'Iphone 9',
+  gia: 3000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 19,
+  tensanpham: 'Iphone 10',
+  gia: 4000,
+  hinhanh: '',
+  status: true
+}, {
+  id: 20,
+  tensanpham: 'Iphone 11',
+  gia: 5000,
+  hinhanh: '',
+  status: false
 }]

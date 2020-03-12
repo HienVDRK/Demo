@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
+import Pagination from 'react-js-pagination'
 import { listSanpham } from '../listSanpham'
 import Layout from '../src/layouts/Layout'
 
@@ -8,7 +9,10 @@ class Home extends Component {
     super(props)
     this.state = {
       tensanpham: '',
-      sanpham: ''
+      sanpham: '',
+      activePage: 1,
+      totalResults: 0,
+      PerPage: 3
     }
   }
 
@@ -22,12 +26,35 @@ class Home extends Component {
   handleOnSearch = (e) => {
     e.preventDefault()
     const tukhoa = this.state.tensanpham
-    const getSanpham = listSanpham.filter(x => x.tensanpham === tukhoa)
-    this.setState({ sanpham: getSanpham })
+    let getSanpham
+    if (tukhoa) {
+      getSanpham = listSanpham.filter(x => x.tensanpham === tukhoa)
+    } else {
+      getSanpham = listSanpham
+    }
+    this.setState({
+      sanpham: getSanpham,
+      totalResults: getSanpham.length
+    })
+  }
+
+  handlePageChange = async (number) => {
+    await this.setState({
+      activePage: number
+    })
+  }
+
+  componentWillMount () {
+    this.setState({
+      totalResults: listSanpham.length
+    })
   }
 
   render () {
     const data = this.state.sanpham || listSanpham
+    const indexOfLastTodo = this.state.activePage * this.state.PerPage
+    const indexOfFirstTodo = indexOfLastTodo - this.state.PerPage
+    const currentTodos = data.slice(indexOfFirstTodo, indexOfLastTodo)
     return (
       <Layout>
         <form onSubmit={this.handleOnSearch}>
@@ -42,8 +69,8 @@ class Home extends Component {
           <br />
           <button type='submit' className='btn btn-primary'>Tìm kiếm</button>
         </form>
-
-        {data.map((sanpham, index) => (
+        <h3>Tìm thấy {data.length} bản ghi</h3> <hr />
+        {currentTodos.map((sanpham, index) => (
           <div key={index}>
             <Link
               as={`/detail/${sanpham.id}`}
@@ -62,6 +89,14 @@ class Home extends Component {
             <hr />
           </div>
         ))}
+        <Pagination
+          hideDisabled
+          activePage={this.state.activePage}
+          itemsCountPerPage={this.state.PerPage}
+          totalItemsCount={this.state.totalResults}
+          pageRangeDisplayed={10}
+          onChange={this.handlePageChange}
+        />
       </Layout>
     )
   }
