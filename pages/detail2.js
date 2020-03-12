@@ -3,9 +3,9 @@ import Layout from '../src/layouts/Layout'
 import { listSanpham } from '../listSanpham'
 
 class Detail extends Component {
-  static async getInitialProps ({ query }) {
+  static getInitialProps ({ query }) {
     const id = query.id
-    const getSanpham = await listSanpham.find(x => x.id === Number.parseInt(id))
+    const getSanpham = listSanpham.find(x => x.id === Number.parseInt(id))
     if (getSanpham) {
       return getSanpham
     }

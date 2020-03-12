@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Pagination from 'react-js-pagination'
 import { listSanpham } from '../listSanpham'
 import Layout from '../src/layouts/Layout'
+import style from '../src/styles/index.module.css'
 
 class Home extends Component {
   constructor (props) {
@@ -12,7 +13,7 @@ class Home extends Component {
       sanpham: '',
       activePage: 1,
       totalResults: 0,
-      PerPage: 3
+      PerPage: 5
     }
   }
 
@@ -72,20 +73,26 @@ class Home extends Component {
         <h3>Tìm thấy {data.length} bản ghi</h3> <hr />
         {currentTodos.map((sanpham, index) => (
           <div key={index}>
-            <Link
-              as={`/detail/${sanpham.id}`}
-              href={{
-                pathname: '/detail',
-                query: {
-                  id: `${sanpham.id}`
-                }
-              }}
-            >
-              <h3>Sản phẩm: {sanpham.tensanpham}</h3>
-            </Link>
-            <h3>Giá: {sanpham.gia}</h3>
-            <h3>Trạng thái: {sanpham.status === true ? 'Còn hàng' : 'Hết hàng'}</h3>
-            <img src={sanpham.hinhanh} alt={sanpham.tensanpham} />
+            <div className='row'>
+              <div className='col-sm-8 col-md-8 col-lg-8'>
+                <Link
+                  as={`/detail/${sanpham.id}`}
+                  href={{
+                    pathname: '/detail',
+                    query: {
+                      id: `${sanpham.id}`
+                    }
+                  }}
+                >
+                  <span className={style.ten_sp}>Sản phẩm: {sanpham.tensanpham}</span>
+                </Link><br />
+                <span className={style.gia_sp}>Giá: {sanpham.gia}</span><br />
+                <span className={style.trangthai_sp}>Trạng thái: {sanpham.status === true ? 'Còn hàng' : 'Hết hàng'}</span><br />
+              </div>
+              <div className='col-sm-4 col-md-4 col-lg-4'>
+                <img className={style.hinhanh_sp} src={sanpham.hinhanh} alt={sanpham.tensanpham} />
+              </div>
+            </div>
             <hr />
           </div>
         ))}

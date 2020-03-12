@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { listSanpham } from '../listSanpham'
 import Layout from '../src/layouts/Layout'
 import SanPham from '../src/components/SanPham'
+import axios from 'axios'
+import fetch from 'isomorphic-unfetch'
 
 class Home extends Component {
   constructor (props) {
@@ -22,12 +23,12 @@ class Home extends Component {
   handleOnSearch = (e) => {
     e.preventDefault()
     const tukhoa = this.state.tensanpham
-    const getSanpham = listSanpham.filter(x => x.tensanpham === tukhoa)
+    const getSanpham = this.props.data.filter(x => x.tensanpham === tukhoa)
     this.setState({ sanpham: getSanpham })
   }
 
   render () {
-    const data = this.state.sanpham || listSanpham
+    const data = this.state.sanpham || this.props.data
     return (
       <Layout>
         <form onSubmit={this.handleOnSearch}>
@@ -42,13 +43,22 @@ class Home extends Component {
           <br />
           <button type='submit' className='btn btn-primary'>Tìm kiếm</button>
         </form>
-
+        <hr />
         {data.map((sanpham, index) => (
           <SanPham value={sanpham} key={index} />
         ))}
       </Layout>
     )
   }
+}
+
+Home.getInitialProps = async ctx => {
+  // const res = await fetch('http://localhost:3500/api/products')
+  // const json = await res.json()
+  // return { data: json }
+
+  const res = await axios.get('http://localhost:3500/api/products')
+  return { data: res.data }
 }
 
 export default Home

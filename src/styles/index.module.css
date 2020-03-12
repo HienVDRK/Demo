@@ -1,0 +1,19 @@
+.ten_sp {
+  font-size: 30px;
+  color: brown
+}
+.ten_sp:hover {
+  cursor: pointer
+}
+.gia_sp {
+  font-size: 20px;
+}
+.trangthai_sp {
+  font-size: 20px;
+}
+.hinhanh_sp {
+  float: left;
+  height: 110px;
+  width: 110px;
+  border: 1px solid gray;
+}
