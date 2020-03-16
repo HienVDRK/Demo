@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Layout from '../src/layouts/Layout'
 import SanPham from '../src/components/SanPham'
 import axios from 'axios'
-import fetch from 'isomorphic-unfetch'
+// import fetch from 'isomorphic-unfetch'
 
-class Home extends Component {
+class Home2 extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -52,7 +52,7 @@ class Home extends Component {
   }
 }
 
-Home.getInitialProps = async ctx => {
+Home2.getInitialProps = async ctx => {
   // const res = await fetch('http://localhost:3500/api/products')
   // const json = await res.json()
   // return { data: json }
@@ -61,4 +61,4 @@ Home.getInitialProps = async ctx => {
   return { data: res.data }
 }
 
-export default Home
+export default Home2

@@ -35,7 +35,8 @@ class Home extends Component {
     }
     this.setState({
       sanpham: getSanpham,
-      totalResults: getSanpham.length
+      totalResults: getSanpham.length,
+      activePage: 1
     })
   }
 
