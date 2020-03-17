@@ -3,6 +3,7 @@ import Layout from '../src/layouts/Layout'
 import SanPham from '../src/components/SanPham'
 // import axios from 'axios'
 import fetch from 'isomorphic-unfetch'
+const port = process.env.PORT || 3500
 
 class Home2 extends Component {
   constructor (props) {
@@ -52,12 +53,12 @@ class Home2 extends Component {
   }
 }
 
-Home2.getInitialProps = async ctx => {
-  const res = await fetch(`http://localhost:${process.env.PORT}/api/products`)
+Home2.getInitialProps = async () => {
+  const res = await fetch(`http://localhost:${port}/api/products`)
   const json = await res.json()
   return { data: json }
 
-  // const res = await axios.get('http://localhost:3500/api/products')
+  // const res = await axios.get(`http://localhost:${port}/api/products`)
   // return { data: res.data }
 }
 
