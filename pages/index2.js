@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Layout from '../src/layouts/Layout'
 import SanPham from '../src/components/SanPham'
-import axios from 'axios'
-// import fetch from 'isomorphic-unfetch'
+// import axios from 'axios'
+import fetch from 'isomorphic-unfetch'
 
 class Home2 extends Component {
   constructor (props) {
@@ -53,12 +53,12 @@ class Home2 extends Component {
 }
 
 Home2.getInitialProps = async ctx => {
-  // const res = await fetch('http://localhost:3500/api/products')
-  // const json = await res.json()
-  // return { data: json }
+  const res = await fetch(`http://localhost:${process.env.PORT}/api/products`)
+  const json = await res.json()
+  return { data: json }
 
-  const res = await axios.get('http://localhost:3500/api/products')
-  return { data: res.data }
+  // const res = await axios.get('http://localhost:3500/api/products')
+  // return { data: res.data }
 }
 
 export default Home2
